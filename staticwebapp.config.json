@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "mimeTypes": {
+    ".json": "application/json",
+    ".svg": "image/svg+xml",
+    ".ttf": "font/ttf"
+  },
+  "routes": [
+    {
+      "route": "/.well-known/assetlinks.json",
+      "headers": {
+        "content-type": "application/json"
+      }
+    }
+  ]
+}
