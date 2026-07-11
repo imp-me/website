@@ -17,28 +17,25 @@ instead of a dead browser tab.
 
 ## The one thing you must finish: the signing fingerprint
 
-`.well-known/assetlinks.json` currently has a **placeholder** fingerprint:
-
-```
-REPLACE_WITH_SHA256_OF_DISTRIBUTED_APK_SIGNING_CERT
-```
-
-App Links verification will fail until this is the real SHA-256 of the certificate
-that signs the APK users actually install. The imp.me Android app currently signs
-**both** debug and release builds with the debug keystore, and CI distributes the
-debug APK via Firebase App Distribution — so the fingerprint you need is the one on
-**that** APK, not a local dev machine's debug keystore.
-
-Get it straight from a distributed APK:
+`.well-known/assetlinks.json` holds the SHA-256 of the certificate that signs the APK
+users actually install. It is currently the **Android Debug** cert
+(`C=US, O=Android, CN=Android Debug`), because the imp.me Android app signs **both**
+debug and release builds with the debug keystore (`app/build.gradle.kts`) and CI
+distributes the debug APK via Firebase App Distribution. Extracted from the published
+staging APK:
 
 ```bash
-apksigner verify --print-certs imp-me-staging.apk    # use the "SHA-256 digest"
-# format as colon-separated uppercase hex, e.g. AB:CD:EF:...
+apksigner verify --print-certs imp-me-staging.apk    # "SHA-256 digest"
+# → 09:10:10:74:2E:C0:A2:05:1D:B3:A4:DC:C0:D4:1B:91:70:0A:BD:57:EE:5F:79:09:4F:64:0C:82:BC:3F:DD:22
 ```
 
-Paste it into the `sha256_cert_fingerprints` array. Multiple entries are allowed —
-add the release/upload key's fingerprint too once the app moves to a real signing key
-(e.g. Play App Signing).
+**When this must be updated:**
+
+- The debug keystore lives on the self-hosted CI runner. If that runner is
+  reprovisioned (or its `~/.android/debug.keystore` regenerated), the fingerprint
+  changes and this file must be updated, or verification breaks.
+- When the app moves to a real release/upload key (e.g. Play App Signing), add that
+  key's SHA-256 to the `sha256_cert_fingerprints` array (multiple entries are allowed).
 
 Validate with Google's [Statement List Tester](https://developers.google.com/digital-asset-links/tools/generator)
 and, on a device, `adb shell pm get-app-links me.imp.mobile`.
