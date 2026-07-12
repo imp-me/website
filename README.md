@@ -12,7 +12,8 @@ instead of a dead browser tab.
 | `index.html` | Coming-soon page (dark, on-brand, imp voice). Self-contained; Noto Sans bundled under `fonts/`. |
 | `.well-known/assetlinks.json` | **Android App Links** Digital Asset Links statement. This is the reason the site must exist. |
 | `favicon.svg` | The imp mark, amber on dark. |
-| `staticwebapp.config.json` | Azure Static Web Apps config — pins `.json`/`.svg`/`.ttf` MIME types and serves `assetlinks.json` as `application/json`. |
+| `.nojekyll` | Disables Jekyll on GitHub Pages so the `.well-known/` folder is served (Jekyll ignores dot-folders). **Do not delete.** |
+| `CNAME` | Binds the GitHub Pages site to the `theimp.me` custom domain. |
 | `robots.txt` | Allow-all. |
 
 ## The one thing you must finish: the signing fingerprint
@@ -42,28 +43,31 @@ and, on a device, `adb shell pm get-app-links me.imp.mobile`.
 
 ## Hosting — Azure Static Web Apps
 
-Hosted on **Azure Static Web Apps** (same cloud as the imp.me backend + admin UI),
-deployed from this repo. There is no app build step — it's plain static files, so the
-app location is the repo root and the output location is empty.
+Hosted on **GitHub Pages**, served from this repo's `main` branch (root), custom
+domain `theimp.me`. Plain static files — no build step.
 
-Setup (needs Azure portal + DNS access):
+Setup (needs repo admin + DNS access):
 
-1. **Create the Static Web App** (Azure portal → Create a resource → Static Web App),
-   linked to `imp-me/website`, branch `main`. Build presets: **Custom**;
-   app location `/`, output location *(blank)*. Azure commits a deploy workflow to the
-   repo and needs the `AZURE_STATIC_WEB_APPS_API_TOKEN` secret (it adds this for you).
-2. **Custom domain** (portal → the SWA → Custom domains → add `theimp.me`). Validate
-   via the TXT record Azure gives you, then point the apex at the SWA:
-   - apex `theimp.me` → `ALIAS`/`A` per Azure's instructions (SWA supports apex domains),
-     or host DNS in **Azure DNS** to keep it alongside the rest of the infra.
-   - `www` → `CNAME` to the SWA default hostname (optional).
-   Managed TLS is issued automatically once validation passes.
-3. **Verify** `https://theimp.me/.well-known/assetlinks.json` returns `200` with
-   `Content-Type: application/json` and **no redirect** (App Links won't follow one).
-   `staticwebapp.config.json` already pins the content-type.
+1. **Enable Pages** — repo → Settings → Pages → Source **Deploy from a branch**,
+   branch `main`, folder `/ (root)`. Save.
+2. **DNS** (registrar: GoDaddy) — point the apex `theimp.me` at GitHub Pages with four
+   `A` records (and optional `AAAA` for IPv6):
+   ```
+   A    @   185.199.108.153
+   A    @   185.199.109.153
+   A    @   185.199.110.153
+   A    @   185.199.111.153
+   ```
+   Remove any pre-existing GoDaddy parking/forwarding record on `@` first.
+3. **Custom domain** — Settings → Pages → Custom domain → `theimp.me` → Save (this
+   writes/confirms the `CNAME` file). Once DNS resolves, tick **Enforce HTTPS**
+   (GitHub issues a Let's Encrypt cert automatically).
+4. **Verify** `https://theimp.me/.well-known/assetlinks.json` returns `200`,
+   `Content-Type: application/json`, and **no redirect** (App Links won't follow one).
+   `.nojekyll` ensures the `.well-known/` folder is published.
 
-> The domain is registered at GoDaddy; you can keep the registrar there and just point
-> DNS at Azure, or move DNS into Azure DNS — either works for App Links.
+> The domain is registered at GoDaddy. Keep the registrar there and just point the
+> apex `A` records at GitHub — no need to move nameservers.
 
 ## Related
 
