@@ -50,15 +50,18 @@ Setup (needs repo admin + DNS access):
 
 1. **Enable Pages** — repo → Settings → Pages → Source **Deploy from a branch**,
    branch `main`, folder `/ (root)`. Save.
-2. **DNS** (registrar: GoDaddy) — point the apex `theimp.me` at GitHub Pages with four
-   `A` records (and optional `AAAA` for IPv6):
+2. **DNS** (registrar + DNS: **Namecheap**, Advanced DNS tab) — point the apex `theimp.me`
+   at GitHub Pages with four `A` records (and optional `AAAA` for IPv6):
    ```
-   A    @   185.199.108.153
-   A    @   185.199.109.153
-   A    @   185.199.110.153
-   A    @   185.199.111.153
+   A Record    @    185.199.108.153
+   A Record    @    185.199.109.153
+   A Record    @    185.199.110.153
+   A Record    @    185.199.111.153
+   CNAME       www  imp-me.github.io.
    ```
-   Remove any pre-existing GoDaddy parking/forwarding record on `@` first.
+   Remove any pre-existing Namecheap parking / URL-redirect record on `@` or `www` first.
+   (Namecheap's editor sometimes visually drops a freshly added row on refresh even though
+   it saved — trust the live DNS, not the editor.)
 3. **Custom domain** — Settings → Pages → Custom domain → `theimp.me` → Save (this
    writes/confirms the `CNAME` file). Once DNS resolves, tick **Enforce HTTPS**
    (GitHub issues a Let's Encrypt cert automatically).
@@ -66,8 +69,8 @@ Setup (needs repo admin + DNS access):
    `Content-Type: application/json`, and **no redirect** (App Links won't follow one).
    `.nojekyll` ensures the `.well-known/` folder is published.
 
-> The domain is registered at GoDaddy. Keep the registrar there and just point the
-> apex `A` records at GitHub — no need to move nameservers.
+> The domain is registered at **Namecheap**; manage records under Domain List →
+> `theimp.me` → Manage → **Advanced DNS**. No nameserver change needed.
 
 ## Related
 
