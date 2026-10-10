@@ -16,32 +16,43 @@ instead of a dead browser tab.
 | `CNAME` | Binds the GitHub Pages site to the `theimp.me` custom domain. |
 | `robots.txt` | Allow-all. |
 
-## The one thing you must finish: the signing fingerprint
+## The signing fingerprint
 
 `.well-known/assetlinks.json` holds the SHA-256 of the certificate that signs the APK
-users actually install. It is currently the **Android Debug** cert
-(`C=US, O=Android, CN=Android Debug`), because the imp.me Android app signs **both**
-debug and release builds with the debug keystore (`app/build.gradle.kts`) and CI
-distributes the debug APK via Firebase App Distribution. Extracted from the published
-staging APK:
+users actually install. It is currently the **CI signing key**. Android CI signs every
+distributed build with one keystore, supplied by the `ANDROID_KEYSTORE_BASE64` repo
+secret in `imp-me/imp.me.android` (see imp.me.android#436), and ships the staging APK
+through Firebase App Distribution. Read it off the staging APK:
 
 ```bash
 apksigner verify --print-certs imp-me-staging.apk    # "SHA-256 digest"
-# → 09:10:10:74:2E:C0:A2:05:1D:B3:A4:DC:C0:D4:1B:91:70:0A:BD:57:EE:5F:79:09:4F:64:0C:82:BC:3F:DD:22
+# → AA:E3:17:43:6C:5C:44:A3:40:E4:BE:DE:9C:A6:FD:1C:4F:BF:A3:B8:C4:73:5B:FD:5F:E7:EC:95:07:74:D2:37
 ```
+
+The CI "Guard — verify staging APK signer" step reads the same value and refuses to
+distribute when it doesn't match the `ANDROID_SIGNING_SHA256` secret. The older
+`09:10:10:74…` entry was one self-hosted runner's debug key; it was removed in #1 once
+every runner signed with the shared keystore.
 
 **When this must be updated:**
 
-- The debug keystore lives on the self-hosted CI runner. If that runner is
-  reprovisioned (or its `~/.android/debug.keystore` regenerated), the fingerprint
-  changes and this file must be updated, or verification breaks.
-- When the app moves to a real release/upload key (e.g. Play App Signing), add that
-  key's SHA-256 to the `sha256_cert_fingerprints` array (multiple entries are allowed).
+- **The CI keystore changes.** If `ANDROID_KEYSTORE_BASE64` is ever replaced, the
+  fingerprint changes. Update this file and `ANDROID_SIGNING_SHA256` together, or
+  magic links stop opening the app for new builds.
+- **The app ships on Google Play.** Play App Signing re-signs Play installs with a key
+  Google creates on the first upload, so those installs carry a different certificate.
+  Copy the **app signing key** SHA-256 from Play Console → Setup → App integrity → App
+  signing (the page also offers a ready-made Digital Asset Links snippet) and add it as
+  a second entry in `sha256_cert_fingerprints`. Keep the CI entry for as long as
+  Firebase test builds are signed with the CI key.
+
+Local builds sign with the developer's own `~/.android/debug.keystore`, so App Links
+don't verify on them. That's expected.
 
 Validate with Google's [Statement List Tester](https://developers.google.com/digital-asset-links/tools/generator)
 and, on a device, `adb shell pm get-app-links me.imp.mobile`.
 
-## Hosting — Azure Static Web Apps
+## Hosting — GitHub Pages
 
 Hosted on **GitHub Pages**, served from this repo's `main` branch (root), custom
 domain `theimp.me`. Plain static files — no build step.
