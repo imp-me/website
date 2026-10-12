@@ -1,0 +1,661 @@
+<!doctype html>
+<!--
+  imp.me privacy policy page.
+
+  The source of truth is docs/legal/privacy-policy.md in imp-me/imp.me.backend. This page mirrors the policy in that
+  file (everything after its owner-only notes). Change the markdown first, then regenerate or edit this page to match.
+  See README.md.
+-->
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy policy · imp.me</title>
+  <meta name="description" content="What imp.me collects, what the imp does with it, who handles it, how long it is kept, and your rights." />
+  <meta name="theme-color" content="#0A0A0F" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <style>
+    /* Noto Sans — the single family, bundled locally (no external calls). */
+    @font-face {
+      font-family: 'Noto Sans';
+      font-style: normal; font-weight: 400;
+      src: url('/fonts/NotoSans-Regular.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Noto Sans';
+      font-style: normal; font-weight: 600;
+      src: url('/fonts/NotoSans-SemiBold.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Noto Sans';
+      font-style: normal; font-weight: 700;
+      src: url('/fonts/NotoSans-Bold.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Noto Sans';
+      font-style: italic; font-weight: 400;
+      src: url('/fonts/NotoSans-Italic.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    /* The site's tokens (index.html), plus the brand's line-2 and pink for the draft markers. No amber: the imp
+       isn't speaking on this page. */
+    :root {
+      --bg:        #0A0A0F;
+      --surface:   #14141C;
+      --line:      rgba(255,255,255,0.06);
+      --line-2:    rgba(255,255,255,0.12);
+      --ink:       #F4F4F8;
+      --ink-mute:  rgba(244,244,248,0.62);
+      --ink-dim:   rgba(244,244,248,0.38);
+      --pink:      #FF6B9C;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-padding-top: 24px; }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Noto Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .skip {
+      position: absolute; left: 16px; top: -48px;
+      background: var(--surface); color: var(--ink);
+      padding: 8px 14px; border-radius: 8px; z-index: 1;
+    }
+    .skip:focus { top: 16px; }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .site {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--ink); text-decoration: none;
+      font-weight: 600; font-size: 18px;
+      min-height: 44px;
+    }
+    .site img { width: 28px; height: 28px; display: block; }
+
+    .draft {
+      margin: 24px 0 8px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,107,156,0.45);
+      border-radius: 12px;
+      background: var(--surface);
+      font-size: 14px;
+      color: var(--ink-mute);
+    }
+    .draft strong { color: var(--ink); }
+
+    h1 { font-size: 32px; line-height: 1.2; font-weight: 600; margin: 32px 0 8px; }
+    h2 {
+      font-size: 22px; line-height: 1.3; font-weight: 600;
+      margin: 48px 0 12px; padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    h3 { font-size: 17px; line-height: 1.35; font-weight: 600; margin: 32px 0 8px; }
+    p, ul, ol { margin: 0 0 16px; }
+    ul, ol { padding-left: 22px; }
+    li { margin: 0 0 8px; }
+    li > ul, li > ol { margin-top: 8px; }
+    strong { font-weight: 600; }
+
+    .updated { color: var(--ink-mute); font-size: 14px; }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--ink-dim);
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+    a:hover { text-decoration-color: var(--ink); }
+    a:focus-visible, .table-wrap:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+
+    code {
+      font-family: inherit; font-size: 0.92em;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 4px; padding: 0.05em 0.35em;
+      overflow-wrap: anywhere;
+    }
+
+    /* An unfinished placeholder: impossible to miss, so the page can't go out with one by accident. */
+    mark.placeholder {
+      background: rgba(255,107,156,0.14);
+      color: var(--pink);
+      border: 1px dashed rgba(255,107,156,0.7);
+      border-radius: 4px;
+      padding: 0.05em 0.35em;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    nav.contents {
+      margin: 24px 0 0;
+      padding: 16px 20px 8px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    nav.contents h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 14px; color: var(--ink-mute); }
+    nav.contents ol { margin: 0 0 8px; }
+    nav.contents li { margin: 0 0 4px; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0 0 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    th { font-weight: 600; color: var(--ink-mute); border-bottom-color: var(--line-2); white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td { min-width: 9em; }
+
+    footer {
+      margin-top: 56px; padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 14px; color: var(--ink-dim);
+    }
+    footer a { color: var(--ink-mute); }
+
+    /* On a phone, each row reads as a card, with its column names as labels, rather than a table to scroll. */
+    @media (max-width: 600px) {
+      .table-wrap { border: 0; border-radius: 0; overflow: visible; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      thead {
+        position: absolute; width: 1px; height: 1px; overflow: hidden;
+        clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+      }
+      tr {
+        border: 1px solid var(--line); border-radius: 12px;
+        background: var(--surface); padding: 6px 0; margin: 0 0 12px;
+      }
+      td, tr:last-child td { border: 0; padding: 6px 14px; min-width: 0; }
+      td::before {
+        content: attr(data-label);
+        display: block; font-size: 12px; font-weight: 600; color: var(--ink-mute);
+      }
+    }
+
+    @media (max-width: 380px) {
+      h1 { font-size: 28px; }
+      h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#policy">Skip to the policy</a>
+  <div class="page">
+    <header>
+      <a class="site" href="/"><img src="/favicon.svg" alt="" width="28" height="28" />imp.me</a>
+    </header>
+
+    <main id="policy">
+      <p class="draft" role="note"><strong>Draft, not yet in force.</strong> Highlighted items such as
+        <mark class="placeholder">[[OWNER: …]]</mark> are still to be filled in, and the policy is waiting for a legal
+        review.</p>
+
+      <h1>Privacy policy</h1>
+      <p class="updated"><strong>Last updated:</strong> <mark class="placeholder">[[OWNER: date]]</mark></p>
+      <p>This policy explains what imp.me collects about you, what we do with it, who else handles it, how long we keep it, and what you can do about it. We've tried to write it in plain English. If anything is unclear, ask us (see <a href="#contact-us">Contact us</a>).</p>
+
+      <nav class="contents" aria-labelledby="contents-heading">
+        <h2 id="contents-heading">Contents</h2>
+        <ol>
+<li><a href="#who-we-are">Who we are</a></li>
+<li><a href="#the-short-version">The short version</a></li>
+<li><a href="#what-we-collect-and-where-it-comes-from">What we collect, and where it comes from</a></li>
+<li><a href="#what-the-imp-does-with-it">What the imp does with it</a></li>
+<li><a href="#why-we-use-it-and-our-lawful-bases">Why we use it, and our lawful bases</a></li>
+<li><a href="#who-can-see-it-and-who-handles-it-for-us">Who can see it, and who handles it for us</a></li>
+<li><a href="#sending-data-outside-the-uk">Sending data outside the UK</a></li>
+<li><a href="#how-long-we-keep-it">How long we keep it</a></li>
+<li><a href="#your-rights-and-how-to-use-them">Your rights, and how to use them</a></li>
+<li><a href="#keeping-it-safe">Keeping it safe</a></li>
+<li><a href="#children">Children</a></li>
+<li><a href="#cookies-and-trackers">Cookies and trackers</a></li>
+<li><a href="#changes-to-this-policy">Changes to this policy</a></li>
+<li><a href="#contact-us">Contact us</a></li>
+</ol>
+      </nav>
+
+<h2 id="who-we-are">Who we are</h2>
+<p>imp.me is an app for families and friends to share things, talk about them and turn them into plans. It is run by <mark class="placeholder">[[OWNER: legal entity name]]</mark>, of <mark class="placeholder">[[OWNER: registered address]]</mark> ("we", "us"). We are the controller of the personal data described here, under UK data protection law (the UK GDPR and the Data Protection Act 2018).</p>
+<ul>
+<li>Privacy contact: <mark class="placeholder">[[OWNER: privacy contact email]]</mark></li>
+<li>Data protection officer: <mark class="placeholder">[[OWNER: DPO]]</mark></li>
+<li>ICO registration number: <mark class="placeholder">[[OWNER: ICO registration number]]</mark></li>
+</ul>
+<h2 id="the-short-version">The short version</h2>
+<ul>
+<li>We collect what you give us (your account, what you share, your messages and plans) and a little about how you use the app (logs, crash reports and analytics).</li>
+<li><strong>The imp is our AI.</strong> When it works on something, the text goes to Anthropic, who run the model. It only works where someone has an imp at work: your own things if you're on Pro, or anything in a group where a member has brought their imp in. That can include things you share as a Free member.</li>
+<li>If you choose to, we use your approximate location, Bluetooth "near each other" signals and your Google Calendar's free and busy times. Each is something you switch on.</li>
+<li>We don't sell your data and we don't show ads.</li>
+<li>You can download your data and delete your account from the app.</li>
+<li>Some data has a set lifetime, mostly 30 days for logs and location. The rest stays while your account exists.</li>
+</ul>
+<h2 id="what-we-collect-and-where-it-comes-from">What we collect, and where it comes from</h2>
+<h3 id="your-account">Your account</h3>
+<ul>
+<li><strong>Email address</strong>, and your <strong>password</strong> if you set one. Your password is held by our sign-in provider (Supabase), in hashed form. We don't store it ourselves.</li>
+<li><strong>Profile:</strong> your display name, your interests, and whether you're on Free or Pro.</li>
+<li><strong>Home and travel settings, if you add them:</strong> your home area (typed, or picked from Google's place suggestions), the coordinates we look up for it, and how far you're happy to travel.</li>
+<li><strong>Household details, if you add them:</strong> the birth years of children in your household, whether you're dog-friendly, and whether you want the imp to watch the weather for you. These help the imp suggest things that suit you.</li>
+<li><strong>Group details:</strong> groups you create or join, your role, invite codes, and any group icon you upload.</li>
+</ul>
+<h3 id="what-you-share">What you share</h3>
+<ul>
+<li><strong>Links</strong> you share, and the <strong>caption</strong> you write with them.</li>
+<li><strong>Files you upload:</strong> photos, videos and other files you share, and photos you add to a plan. We store each file as the app receives it from your phone. A photo can carry details such as when and where it was taken, and these may stay in the file. <mark class="placeholder">[[OWNER: photo metadata]]</mark></li>
+<li><strong>Link previews we fetch:</strong> for a web link, we fetch the page's title, description, image and text, so the share shows a proper card and the imp can understand it.</li>
+<li><strong>Event details</strong> we pick out of a page or caption, such as what, where, when and price, and any edits you make to them.</li>
+</ul>
+<h3 id="messages-and-reactions">Messages and reactions</h3>
+<ul>
+<li>Messages in <strong>group chats</strong>, <strong>plan chats</strong>, <strong>comments</strong> on shared things, and <strong>direct messages</strong> between two people. Your display name is saved with your messages.</li>
+<li><strong>Reactions</strong> to shares, and which conversations you've read up to.</li>
+<li><strong>"Drop a pin":</strong> if you send your location in a plan chat, it goes as an ordinary message containing a map link with your coordinates. It is kept like any other message.</li>
+</ul>
+<h3 id="plans">Plans</h3>
+<ul>
+<li>Plans you create or join: title, description, where, dates and time zone, and who's on it with their answers.</li>
+<li>What you add to a plan: the dates you can do, date changes you propose and your answers to them, polls and your votes, itinerary stops and travel legs (which can include booking references, costs and notes), and shares linked to the plan.</li>
+<li>Your <strong>bucket list</strong>, your <strong>categories</strong>, and <strong>standing requests</strong> you give the imp ("let me know if a good gig comes up near us").</li>
+</ul>
+<h3 id="location-and-nearby-phones">Location and nearby phones</h3>
+<p>All of this is optional, and needs your permission on the phone.</p>
+<ul>
+<li><strong>Approximate location during a plan.</strong> When you look for photos from a plan, the app sends the phone's last known approximate location. This helps tell which photos were taken near other people on the plan. The app asks for approximate location, while you're using it. On Android 11 and older, nearby-phone watching (below) also needs Android's precise-location permission. If you've given it, the location the app sends may be precise.</li>
+<li><strong>Where your photos were taken.</strong> When you add photos to a plan, the app reads each photo's capture time and location from the photo itself, and sends them with it.</li>
+<li><strong>Nearby phones (co-presence).</strong> If you turn on "Let the imp watch passively" for a plan, your phone uses Bluetooth to notice other members' phones nearby. It records "near another member at this time", using a code that changes, with no coordinates. A notification shows while it runs, and it stops when the plan ends.</li>
+</ul>
+<h3 id="calendar">Calendar</h3>
+<p>If you connect a Google Calendar, we ask Google for two permissions only:</p>
+<ul>
+<li><strong>free/busy</strong> (<code>calendar.freebusy</code>), to see when you're busy, up to a year ahead; and</li>
+<li><strong>your calendar list</strong> (<code>calendar.calendarlist.readonly</code>), to show you which calendars to include and to learn the account's email address.</li>
+</ul>
+<p>We never read your events' titles, descriptions, attendees or locations. We store the busy and free times, which calendars you chose, the Google account's email address, and the access keys Google gives us, encrypted. Your group sees free and busy information as counts ("4 of 6 free"), not who is busy. The imp can see whether each member of a group is free right now (see <a href="#what-the-imp-does-with-it">What the imp does with it</a>).</p>
+<h3 id="your-phone-and-notifications">Your phone and notifications</h3>
+<ul>
+<li>A <strong>device identifier</strong> from Firebase (the Firebase installation ID), the platform, and when it was registered, so we can send you push notifications.</li>
+<li>Your <strong>notification preferences</strong>, your <strong>notification inbox</strong>, and a record of each push and email we sent or held back (which device, when and what kind) for 30 days.</li>
+</ul>
+<h3 id="voice">Voice</h3>
+<p>If you use your voice to start a plan, the app uses your phone's built-in speech recognition to turn it into text, and sends us only the text. On many phones that service is provided by Google, which may process the audio on its own servers. We never receive the audio. <mark class="placeholder">[[OWNER: speech recognition]]</mark></p>
+<h3 id="crash-reports-and-analytics">Crash reports and analytics</h3>
+<p>The app uses Google's Firebase:</p>
+<ul>
+<li><strong>Crashlytics</strong> sends a report when the app crashes or hits certain errors: what went wrong in the code, the phone model, Android version, app version, your imp.me user ID (a random string, not your name or email), and whether you're on Free or Pro.</li>
+<li><strong>Analytics</strong> records which screens you open and a few actions: opening a group or one of its tabs, creating a plan, adding a reaction, opening a share, and bringing the imp into or out of a group. These carry IDs and simple values, never message text, links or names. Google's library also collects some information itself, such as an app-instance identifier, device model, operating system, app version and approximate region. <mark class="placeholder">[[OWNER: advertising ID]]</mark></li>
+</ul>
+<p>Both run from the first time you open the app. <mark class="placeholder">[[OWNER: analytics consent]]</mark></p>
+<h3 id="logs">Logs</h3>
+<p>Our server keeps records so it can run safely and so we can fix problems:</p>
+<ul>
+<li><strong>Request log:</strong> each request to our API, with the time, the kind of request (not its content), whether it worked, how long it took, your <strong>IP address</strong>, your app or browser's <strong>user agent</strong> and your user ID. Kept 30 days.</li>
+<li><strong>Activity log:</strong> some actions you take, such as sharing something. Kept 180 days.</li>
+<li><strong>Error log:</strong> errors on our server, with the request type, your user ID and the error, with secrets removed. Kept 30 days.</li>
+<li><strong>The imp's records:</strong> each time the imp runs, which model ran, how many tokens it used, and how it went, without any content (90 days). The number of AI tokens used for you each day. When we switch on quality checks, a copy of the imp's full prompt and answer, which can contain your content (30 days).</li>
+<li><strong>Hosting monitoring:</strong> our hosting provider, Microsoft Azure, records requests, timings and errors to help us keep the service up. <mark class="placeholder">[[OWNER: Application Insights retention and IP handling]]</mark></li>
+<li><strong>Sign-in records:</strong> our sign-in provider, Supabase, keeps its own records of your sign-ins and sessions.</li>
+</ul>
+<h3 id="what-the-imp-works-out-about-you">What the imp works out about you</h3>
+<p>When the imp runs, it produces things such as labels and categories for shares, notes about what you seem to like, cards and suggestions, suggested links between shares and plans, a weather outlook for your home area, and a list of things to do nearby with their distance from your home.</p>
+<h3 id="what-other-people-give-us-about-you">What other people give us about you</h3>
+<p>Other members may add you to a group or plan, share things that mention you, or write about you in messages. Someone who knows your email address can find your account to invite you to a group.</p>
+<h3 id="what-we-dont-collect">What we don't collect</h3>
+<ul>
+<li><strong>No payment details.</strong> Pro is currently set up by us. If we start taking payments, this policy will change first.</li>
+<li><strong>No contacts, no camera, and no audio.</strong> The microphone is used only by your phone's speech recognition (see <a href="#voice">Voice</a>).</li>
+<li><strong>No advertising.</strong> We don't show ads or share data with advertisers.</li>
+</ul>
+<p>We don't ask for sensitive information (such as health or religion), but you might include it in a message or share. Please think about that before you do.</p>
+<h2 id="what-the-imp-does-with-it">What the imp does with it</h2>
+<p>The imp is imp.me's AI. It reads what's going on and, rarely, speaks up with a suggestion. It runs on models made by <strong>Anthropic</strong> (Claude), through Anthropic's API.</p>
+<p><strong>When the imp runs.</strong> Only where an imp is at work:</p>
+<ul>
+<li>for <strong>Pro</strong> members, on their own personal shares and plans;</li>
+<li>in a <strong>group</strong> where a member has brought their imp in. Then it works on what anyone in that group shares and says, <strong>including Free members</strong>.</li>
+</ul>
+<p>On Free with no imp in your groups, the imp is asleep. The monthly "things to do nearby" list is then put together automatically from your home area and interests, with no AI writing.</p>
+<p><strong>What is sent to Anthropic.</strong> Depending on the job, the imp's request can include:</p>
+<ul>
+<li>a share's link, its caption, the page text and details we fetched, and its labels;</li>
+<li>group chat messages that look like they might be about a plan;</li>
+<li>plan details: title, dates, place, itinerary stops, and shares linked to it;</li>
+<li>group members' display names, and free and busy information (counts for the group, and whether each member is free right now);</li>
+<li>for your own imp: your interests, your recent shares, and shares you've marked as interesting;</li>
+<li>your standing requests, the weather outlook for your home area, and suggestions near you.</li>
+</ul>
+<p>While answering, Anthropic's service can ask our server for more through a secure connection: your interests, a group's members (<strong>including their email addresses</strong>), your recent shares, reactions, free and busy times, plans, and the weather outlook. It can only see groups and shares that the imp's owner can see.</p>
+<p><strong>Training and retention.</strong> <mark class="placeholder">[[OWNER: Anthropic terms]]</mark></p>
+<p><strong>Staff testing.</strong> Our staff can run the imp against a real user or group in our admin console to check it is working. They can choose to try another AI model through <strong>OpenRouter</strong>. That sends the same kind of request to OpenRouter and on to the provider of the model they chose (for example, OpenAI). This is never used for the normal running of the app. <mark class="placeholder">[[OWNER: OpenRouter]]</mark></p>
+<p><strong>What the imp can't do.</strong> It doesn't make decisions that have legal or similarly significant effects on you. Everything it offers is a suggestion that a person can take or leave.</p>
+<h2 id="why-we-use-it-and-our-lawful-bases">Why we use it, and our lawful bases</h2>
+<p>UK data protection law says we need a lawful basis for each use. <mark class="placeholder">[[OWNER: lawful bases]]</mark></p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Table: Why we use it, and our lawful bases"><table role="table">
+<thead role="rowgroup">
+<tr role="row">
+<th scope="col" role="columnheader">What we do</th>
+<th scope="col" role="columnheader">With what</th>
+<th scope="col" role="columnheader">Lawful basis</th>
+</tr>
+</thead>
+<tbody role="rowgroup">
+<tr role="row">
+<td role="cell" data-label="What we do">Run your account, groups, sharing, messages and plans</td>
+<td role="cell" data-label="With what">Account, shares, messages, plans</td>
+<td role="cell" data-label="Lawful basis"><strong>Contract</strong>: it is the service you signed up for</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Fetch link previews and pick out event details</td>
+<td role="cell" data-label="With what">The links you share</td>
+<td role="cell" data-label="Lawful basis"><strong>Contract</strong></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Run the imp for a Pro member</td>
+<td role="cell" data-label="With what">That member's content and context</td>
+<td role="cell" data-label="Lawful basis"><strong>Contract</strong></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Run the imp on a group's content, including Free members' shares and messages</td>
+<td role="cell" data-label="With what">Group content, members' names, free/busy</td>
+<td role="cell" data-label="Lawful basis"><strong>Legitimate interests</strong>: the group chose to bring the imp in, and it is limited to that group</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Read your calendar's free and busy times</td>
+<td role="cell" data-label="With what">Free/busy, calendar list</td>
+<td role="cell" data-label="Lawful basis"><strong>Consent</strong>: you connect it, and can disconnect any time</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Use your location, your photos' locations and nearby-phone signals to match plan photos</td>
+<td role="cell" data-label="With what">Location samples, photo locations, co-presence</td>
+<td role="cell" data-label="Lawful basis"><strong>Consent</strong>: phone permissions and the in-app switch</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Send push notifications and emails</td>
+<td role="cell" data-label="With what">Device ID, email, notification content</td>
+<td role="cell" data-label="Lawful basis"><strong>Contract</strong>, with your notification settings</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Keep the service secure, stop abuse and fix faults</td>
+<td role="cell" data-label="With what">Logs, IP addresses, error and crash reports</td>
+<td role="cell" data-label="Lawful basis"><strong>Legitimate interests</strong></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Understand how the app is used, to improve it</td>
+<td role="cell" data-label="With what">Analytics</td>
+<td role="cell" data-label="Lawful basis"><strong>Legitimate interests</strong> <mark class="placeholder">[[OWNER: analytics consent]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What we do">Keep records the law requires, and respond to legal requests</td>
+<td role="cell" data-label="With what">What the request needs</td>
+<td role="cell" data-label="Lawful basis"><strong>Legal obligation</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Where we rely on legitimate interests, you can object (see <a href="#your-rights-and-how-to-use-them">Your rights</a>). Where we rely on consent, you can withdraw it at any time. That doesn't affect what we did before.</p>
+<h2 id="who-can-see-it-and-who-handles-it-for-us">Who can see it, and who handles it for us</h2>
+<h3 id="other-people-in-the-app">Other people in the app</h3>
+<ul>
+<li><strong>Your groups</strong> see your display name, what you share with the group, your messages and your reactions.</li>
+<li><strong>People on a plan</strong> see your answer, the dates you've said you can do, your poll votes, and what you add to the plan.</li>
+<li><strong>Finding people:</strong> members of your groups can find you by your name or email address, and see both. Anyone signed in who types your <strong>exact</strong> email address can find your account and see your display name.</li>
+<li><strong>Public plan pages:</strong> a plan's creator can publish a read-only web page for anyone with the link. It shows the plan and first names only, without user IDs, the plan's description or who voted for what.</li>
+<li><strong>The imp's suggestions</strong> in a group are seen by that group, and those on a plan by the plan's people.</li>
+</ul>
+<h3 id="companies-that-handle-data-for-us">Companies that handle data for us</h3>
+<p>They act on our instructions (as "processors"), except where noted.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Table: Companies that handle data for us"><table role="table">
+<thead role="rowgroup">
+<tr role="row">
+<th scope="col" role="columnheader">Who</th>
+<th scope="col" role="columnheader">What for</th>
+<th scope="col" role="columnheader">What they get</th>
+<th scope="col" role="columnheader">Where</th>
+</tr>
+</thead>
+<tbody role="rowgroup">
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Supabase</strong></td>
+<td role="cell" data-label="What for">Database, sign-in, file storage, live updates</td>
+<td role="cell" data-label="What they get">Everything described in this policy that we store</td>
+<td role="cell" data-label="Where"><mark class="placeholder">[[OWNER: Supabase region]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Microsoft Azure</strong></td>
+<td role="cell" data-label="What for">Hosting our API and admin console, monitoring (Application Insights), sending email (Communication Services)</td>
+<td role="cell" data-label="What they get">Every request to our API; for email, your address, your name and the email's content</td>
+<td role="cell" data-label="Where"><mark class="placeholder">[[OWNER: production hosting region]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Anthropic</strong></td>
+<td role="cell" data-label="What for">Running the imp</td>
+<td role="cell" data-label="What they get">See <a href="#what-the-imp-does-with-it">What the imp does with it</a></td>
+<td role="cell" data-label="Where">US</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>OpenRouter</strong>, and the model provider chosen</td>
+<td role="cell" data-label="What for">Staff testing of other AI models only</td>
+<td role="cell" data-label="What they get">The same as Anthropic, when staff choose it</td>
+<td role="cell" data-label="Where">US, and the provider's location</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Google: Firebase Cloud Messaging</strong></td>
+<td role="cell" data-label="What for">Delivering push notifications</td>
+<td role="cell" data-label="What they get">Your device ID and the notification's text, which can include a message or a share's title</td>
+<td role="cell" data-label="Where">US and elsewhere</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Google: Firebase Crashlytics and Analytics</strong></td>
+<td role="cell" data-label="What for">Crash reports and app analytics</td>
+<td role="cell" data-label="What they get">See <a href="#crash-reports-and-analytics">Crash reports and analytics</a></td>
+<td role="cell" data-label="Where">US and elsewhere</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Google: Calendar API</strong></td>
+<td role="cell" data-label="What for">Your free and busy times, if you connect a calendar</td>
+<td role="cell" data-label="What they get">The access Google granted, and the time range asked about</td>
+<td role="cell" data-label="Where">US and elsewhere</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Google: Places API</strong></td>
+<td role="cell" data-label="What for">Suggesting and looking up places, such as your home area</td>
+<td role="cell" data-label="What they get">What you type when picking a place; no account details</td>
+<td role="cell" data-label="Where">US and elsewhere</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Firecrawl</strong></td>
+<td role="cell" data-label="What for">Fetching link previews</td>
+<td role="cell" data-label="What they get">The web address you shared (never your caption or uploads)</td>
+<td role="cell" data-label="Where"><mark class="placeholder">[[OWNER: Firecrawl and Open-Meteo locations]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>Open-Meteo</strong></td>
+<td role="cell" data-label="What for">Weather, and finding places by name</td>
+<td role="cell" data-label="What they get">Coordinates of your home area, or a place name</td>
+<td role="cell" data-label="Where"><mark class="placeholder">[[OWNER: Firecrawl and Open-Meteo locations]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>postcodes.io</strong></td>
+<td role="cell" data-label="What for">Looking up UK postcodes</td>
+<td role="cell" data-label="What they get">A postcode you type for your home</td>
+<td role="cell" data-label="Where">UK</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="Who"><strong>GitHub</strong></td>
+<td role="cell" data-label="What for">Tracking bugs; hosting theimp.me</td>
+<td role="cell" data-label="What they get">Error details from our server may be copied into our private issue tracker; GitHub Pages may log visitors' IP addresses</td>
+<td role="cell" data-label="Where">US</td>
+</tr>
+</tbody>
+</table></div>
+<p>We also use <strong>Skiddle</strong> to find events near our users. We send Skiddle the area we're searching, never anything about you.</p>
+<p>Google's Calendar data is used only to show availability inside imp.me, under Google's API Services User Data Policy, including its Limited Use requirements. <mark class="placeholder">[[OWNER: lawyer to confirm the imp's use of free/busy meets Limited Use]]</mark></p>
+<h3 id="other-times-we-might-share-it">Other times we might share it</h3>
+<ul>
+<li>If the law requires it, or to protect someone's safety or our rights.</li>
+<li>If imp.me is sold or merged, with the new owner, who must respect this policy.</li>
+</ul>
+<p><strong>We never sell your data</strong>, and we never share it for advertising.</p>
+<h2 id="sending-data-outside-the-uk">Sending data outside the UK</h2>
+<p>Some providers are based in, or process data in, other countries, mainly the US. Where that happens, we rely on a lawful safeguard for each: <mark class="placeholder">[[OWNER: transfer safeguards]]</mark>. You can ask us for details.</p>
+<h2 id="how-long-we-keep-it">How long we keep it</h2>
+<h3 id="while-you-have-an-account">While you have an account</h3>
+<p>Most of what you create (your profile, shares, messages, plans, reactions, settings, and what the imp has worked out) stays while your account exists, unless you delete it sooner.</p>
+<h3 id="fixed-periods">Fixed periods</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Table: Fixed periods"><table role="table">
+<thead role="rowgroup">
+<tr role="row">
+<th scope="col" role="columnheader">What</th>
+<th scope="col" role="columnheader">How long</th>
+</tr>
+</thead>
+<tbody role="rowgroup">
+<tr role="row">
+<td role="cell" data-label="What">Location during plans, and nearby-phone signals</td>
+<td role="cell" data-label="How long">30 days from when they were recorded</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Request log (including IP addresses)</td>
+<td role="cell" data-label="How long">30 days</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Error log</td>
+<td role="cell" data-label="How long">30 days</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Record of pushes and emails sent</td>
+<td role="cell" data-label="How long">30 days</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Copies of the imp's full prompts and answers (when switched on)</td>
+<td role="cell" data-label="How long">30 days</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Records of the imp's runs, without content</td>
+<td role="cell" data-label="How long">90 days. A few that count the imp's attempts at a standing request have no time limit. They're deleted with your account.</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Activity log</td>
+<td role="cell" data-label="How long">180 days</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Links to a plan's web page</td>
+<td role="cell" data-label="How long">A personal link: a day after it expires. A public link: 30 days after it's switched off.</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Calendar connection attempts</td>
+<td role="cell" data-label="How long">A day after they expire (10 minutes after they start)</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Background job records</td>
+<td role="cell" data-label="How long">Finished jobs: about a day. Failed jobs: until we clear them. <mark class="placeholder">[[OWNER: failed background jobs]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Record that an account was deleted (just the account ID and dates)</td>
+<td role="cell" data-label="How long">30 days after the deletion finishes</td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Crash reports and analytics</td>
+<td role="cell" data-label="How long"><mark class="placeholder">[[OWNER: Firebase retention]]</mark></td>
+</tr>
+<tr role="row">
+<td role="cell" data-label="What">Hosting monitoring</td>
+<td role="cell" data-label="How long"><mark class="placeholder">[[OWNER: Application Insights retention and IP handling]]</mark></td>
+</tr>
+</tbody>
+</table></div>
+<p><mark class="placeholder">[[OWNER: retention not yet set]]</mark> Today these have no set period: the count of AI tokens used for you (kept while your account exists), daily counts of link-preview and place lookups per user (<strong>kept even after your account is deleted</strong>, as a bare ID and numbers), your notification inbox, the imp's cards, notes and suggestions, the list of things to do nearby, and the weather outlook. All except the daily lookup counts are deleted with your account.</p>
+<h3 id="backups">Backups</h3>
+<p>Our database provider's plan keeps no backups. Data we delete doesn't survive in a backup.</p>
+<h3 id="when-you-delete-your-account">When you delete your account</h3>
+<p><mark class="placeholder">[[OWNER: deletion flow is live]]</mark></p>
+<ol>
+<li>You confirm it's you: with your password, or, if you don't use one, a 6-digit code we email you.</li>
+<li>Your account is switched off at once. You're signed out everywhere, and you get no more notifications.</li>
+<li>We email you a link to keep the account, which works for 14 days.</li>
+<li>After 14 days, we erase your account. We delete your profile, your messages, your personal shares and uploads, your plans and groups that nobody else is in, your calendar connection (and ask Google to withdraw our access), your location records, your devices, and most of your log entries. The error log and the record of notifications sent expire on their own within 30 days.</li>
+</ol>
+<p>Some things other people rely on stay, <strong>without your name</strong>:</p>
+<ul>
+<li>Groups and plans you share with others pass to another member.</li>
+<li>Links you shared into a group stay for the group, with your name and your caption removed.</li>
+<li>A record of what our staff did in the admin console, which holds IDs rather than content, is kept.</li>
+</ul>
+<h2 id="your-rights-and-how-to-use-them">Your rights, and how to use them</h2>
+<p>You have the right to:</p>
+<ul>
+<li><strong>access</strong> your data and get a copy;</li>
+<li><strong>correct</strong> it if it's wrong;</li>
+<li><strong>delete</strong> it;</li>
+<li><strong>restrict</strong> how we use it, or <strong>object</strong> to how we use it;</li>
+<li><strong>take it with you</strong> in a usable format (portability);</li>
+<li><strong>withdraw consent</strong> where we rely on it;</li>
+<li>not be subject to decisions made solely by automated means that significantly affect you. We don't make any.</li>
+</ul>
+<p><strong>In the app:</strong></p>
+<ul>
+<li><strong>Download my data</strong> (Settings → Account) gives you one file with your profile, groups, shares, messages, plans, availability, votes, reactions, categories, bucket list, calendar connections (without access keys), standing requests, photos you added to plans (as links that work for an hour), location records and devices.</li>
+<li><strong>Delete account</strong> (Settings → Account), as described above.</li>
+<li>Edit your profile and settings, disconnect your calendar, change your notification settings, switch off nearby-phone watching, and change location permission in your phone's settings.</li>
+</ul>
+<p><strong>Without the app:</strong> you can ask for your account to be deleted at <code>https://api.theimp.me/account/delete</code>. <mark class="placeholder">[[OWNER: deletion flow is live]]</mark></p>
+<p><strong>Everything else</strong>, including a full copy of what the imp has worked out about you (which the in-app download doesn't include): email <mark class="placeholder">[[OWNER: privacy contact email]]</mark> from the address on your account. We'll reply within one month. We may need to check it's really you.</p>
+<p><strong>Complaints.</strong> Please talk to us first. You also have the right to complain to the Information Commissioner's Office (ICO), the UK regulator: <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk/make-a-complaint</a>, 0303 123 1113, or Information Commissioner's Office, Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF.</p>
+<h2 id="keeping-it-safe">Keeping it safe</h2>
+<ul>
+<li>Everything travels over encrypted connections.</li>
+<li>Uploaded files are private. Only people who can see a share are given a link to its file, and the link works for an hour.</li>
+<li>Your calendar access keys are stored encrypted. Links we issue, such as links to a plan's web page, are stored only as one-way hashes.</li>
+<li>The app can't read or change the database directly, except to receive live updates for what you can already see. Everything else goes through our server, which checks you're allowed. The app can upload files only into your own private folder.</li>
+<li>Staff use a separate admin console with its own sign-in and roles, and what they do there is recorded.</li>
+</ul>
+<p>No system is perfectly secure. If something goes wrong that puts your data at risk, we'll tell you and the ICO where the law requires.</p>
+<h2 id="children">Children</h2>
+<p>You must be at least <mark class="placeholder">[[OWNER: minimum age]]</mark> to have an imp.me account. We don't knowingly create accounts for younger children. If you think a child has an account, contact us and we'll delete it.</p>
+<p>The app lets you record the <strong>birth years</strong> of children in your household, so the imp can suggest things that suit your family. This is optional. We use it only for suggestions, and it is deleted with your account.</p>
+<h2 id="cookies-and-trackers">Cookies and trackers</h2>
+<ul>
+<li><strong>The app</strong> doesn't use cookies. Its analytics are described in <a href="#crash-reports-and-analytics">Crash reports and analytics</a>.</li>
+<li><strong>Our website</strong>, theimp.me, sets no cookies and loads no trackers or outside scripts. Its host, GitHub Pages, may log visitors' IP addresses for security.</li>
+<li><strong>Our server's web pages</strong> (sign-in links, calendar connection, plan pages and account deletion) set no cookies.</li>
+<li><strong>The admin console</strong>, used only by our staff, uses a sign-in cookie and a security cookie.</li>
+</ul>
+<h2 id="changes-to-this-policy">Changes to this policy</h2>
+<p>When we change how we use your data, we'll update this policy and the date at the top. If a change matters, we'll tell you in the app or by email before it takes effect. We keep earlier versions, and can send you one if you ask.</p>
+<h2 id="contact-us">Contact us</h2>
+<ul>
+<li>Email: <mark class="placeholder">[[OWNER: privacy contact email]]</mark></li>
+<li>Post: <mark class="placeholder">[[OWNER: legal entity name]]</mark>, <mark class="placeholder">[[OWNER: registered address]]</mark></li>
+</ul>
+    </main>
+
+    <footer>
+      <a href="/">imp.me home</a>
+    </footer>
+  </div>
+</body>
+</html>
