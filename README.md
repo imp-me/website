@@ -10,11 +10,26 @@ instead of a dead browser tab.
 | Path | Purpose |
 |------|---------|
 | `index.html` | Coming-soon page (dark, on-brand, imp voice). Self-contained; Noto Sans bundled under `fonts/`. |
+| `privacy/index.html` | The privacy policy, served at <https://theimp.me/privacy/>. A mirror of the backend's `docs/legal/privacy-policy.md`; see below. Linked from the coming-soon page's footer. |
 | `.well-known/assetlinks.json` | **Android App Links** Digital Asset Links statement. This is the reason the site must exist. |
 | `favicon.svg` | The imp mark, amber on dark. |
 | `.nojekyll` | Disables Jekyll on GitHub Pages so the `.well-known/` folder is served (Jekyll ignores dot-folders). **Do not delete.** |
 | `CNAME` | Binds the GitHub Pages site to the `theimp.me` custom domain. |
 | `robots.txt` | Allow-all. |
+
+## The privacy policy
+
+`privacy/index.html` mirrors **`docs/legal/privacy-policy.md` in `imp-me/imp.me.backend`, which is the source of
+truth.** The policy describes what the backend and the app do with personal data, so it lives next to that code and
+changes with it. This page carries the policy itself, without the maintainers' note at the top of the markdown.
+
+- **Change the markdown first**, in a backend PR, then bring this page into line in a PR here.
+- The page follows the site's rules: self-contained, Noto Sans from `fonts/`, the same dark tokens as `index.html`,
+  no amber (the imp isn't speaking), and no external scripts, fonts or trackers.
+- **Merging to `main` publishes it**, so merge only a page that says what the markdown says, section by section, and
+  carries the same "last updated" date. imp.me hasn't launched yet, so the page opens with a note saying the policy
+  describes the app as it will work at launch and may change before then. Take the note out at launch.
+- Google Play needs this URL before the listing. See `docs/legal/README.md` in the backend.
 
 ## The signing fingerprint
 
