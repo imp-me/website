@@ -21,13 +21,14 @@ instead of a dead browser tab.
 
 `privacy/index.html` mirrors **`docs/legal/privacy-policy.md` in `imp-me/imp.me.backend`, which is the source of
 truth.** The policy describes what the backend and the app do with personal data, so it lives next to that code and
-changes with it. This page carries the policy itself, without the owner-only notes at the top of the markdown.
+changes with it. This page carries the policy itself, without the maintainers' note at the top of the markdown.
 
 - **Change the markdown first**, in a backend PR, then bring this page into line in a PR here.
 - The page follows the site's rules: self-contained, Noto Sans from `fonts/`, the same dark tokens as `index.html`,
   no amber (the imp isn't speaking), and no external scripts, fonts or trackers.
-- `[[OWNER: …]]` placeholders are highlighted on the page. **Don't merge a version that still has one**: merging to
-  `main` publishes it.
+- **Merging to `main` publishes it**, so merge only a page that says what the markdown says, section by section, and
+  carries the same "last updated" date. imp.me hasn't launched yet, so the page opens with a note saying the policy
+  describes the app as it will work at launch and may change before then. Take the note out at launch.
 - Google Play needs this URL before the listing. See `docs/legal/README.md` in the backend.
 
 ## The signing fingerprint
